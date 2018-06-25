@@ -22,9 +22,11 @@ $fileCount = count($file_arr);
 
 echo "I found " . $fileCount . " files in the directory!" . PHP_EOL;
 
+
 $newName = readline("Please enter the new name the files will have: ");
 $counter = 1;
 foreach($file_arr as $file){
-    rename($file, $newName . "-" . $counter);
+    list($filename, $extension) = explode('.', $file);
+    rename($file, $newName . "-" . $counter . ".$extension");
     $counter++;
 }
